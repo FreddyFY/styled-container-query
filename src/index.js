@@ -8,7 +8,7 @@ import kebabToCamel from './utils/kebab-to-camel'
 
 function parseCss(css) {
   const delimiter = '$$'
-  const regExContainer = /:container\(([^)]+)\)/g
+  const regExContainer = /:media\(([^)]+)\)/g
   const query = {}
   css = css.join(delimiter)
 

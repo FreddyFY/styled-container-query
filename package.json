@@ -1,6 +1,6 @@
 {
-  "name": "@freddyfy/styled-container-query",
-  "version": "1.0.1-beta-2",
+  "name": "styled-container-query",
+  "version": "1.0.0",
   "description": "Use Container Queries [Element Queries] with styled-components",
   "main": "dist/index.js",
   "scripts": {
@@ -14,7 +14,8 @@
     "element-queries",
     "react",
     "css",
-    "css-in-js"
+    "css-in-js",
+    "responsive-component"
   ],
   "author": "Freddy Ochner <freddy@ochner.it> (https://freddy.ochner.it)",
   "license": "ISC",
