@@ -1,0 +1,53 @@
+{
+  "name": "@freddyfy/styled-container-query",
+  "version": "1.0.1-beta-2",
+  "description": "Use Container Queries [Element Queries] with styled-components",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "babel src -d dist --copy-files",
+    "precommit": "lint-staged"
+  },
+  "keywords": [
+    "styled-components",
+    "container-queries",
+    "element-queries",
+    "react",
+    "css",
+    "css-in-js"
+  ],
+  "author": "Freddy Ochner <freddy@ochner.it> (https://freddy.ochner.it)",
+  "license": "ISC",
+  "dependencies": {
+    "classnames": "^2.2.6",
+    "husky": "^0.14.3",
+    "lint-staged": "^7.3.0",
+    "react-container-query": "^0.11.0",
+    "shorthash": "0.0.2"
+  },
+  "peerDependencies": {
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2",
+    "styled-components": "^3.4.9"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.1.0",
+    "@babel/core": "^7.1.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.2",
+    "prettier": "^1.14.3"
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "prettier": {
+    "semi": false,
+    "trailingComma": "all",
+    "singleQuote": true,
+    "printWidth": 120
+  }
+}
