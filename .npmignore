@@ -3,3 +3,4 @@ examples
 .babelrc
 .gitignore
 webpack.config.js
+.idea
