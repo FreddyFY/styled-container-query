@@ -8,7 +8,7 @@ npm install styled-container-query --save
 ```
 
 ## Usage
-Nothing easier than that. You can use it like [styled-components](https://github.com/styled-components) and a media query `:media()`.
+Nothing easier than that. You can use it like [styled-components](https://github.com/styled-components) and a media query `:container()`.
 
 ```javascript
 import styledContainerQuery from 'styled-container-query';
@@ -17,18 +17,18 @@ const Child = styled.span``
 const Component = styledContainerQuery.div`
   background-color: green;
   
-  &:media(min-width: 500px) {
+  &:container(min-width: 500px) {
     background-color: red;
     ${Child} {
           color: white;
       }
   }
   
-  &:media(max-width: 600px and max-width: 900px) {
+  &:container(max-width: 600px and max-width: 900px) {
       background-color: yellow;
   }
   
-  &:media(min-height: 500px) {
+  &:container(min-height: 500px) {
       background-color: blue;
   }
 `;
