@@ -1,6 +1,6 @@
 {
   "name": "styled-container-query",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Use Container Queries [Element Queries] with styled-components",
   "main": "dist/index.js",
   "scripts": {
@@ -21,8 +21,6 @@
   "license": "ISC",
   "dependencies": {
     "classnames": "^2.2.6",
-    "husky": "^0.14.3",
-    "lint-staged": "^7.3.0",
     "react-container-query": "^0.11.0",
     "shorthash": "0.0.2"
   },
@@ -37,12 +35,15 @@
     "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.2",
+    "lint-staged": "^7.3.0",
     "prettier": "^1.14.3"
   },
   "lint-staged": {
     "*.js": [
+      "npm run build",
       "prettier --write",
-      "git add"
+      "git add",
+      "git add ./dist"
     ]
   },
   "prettier": {
