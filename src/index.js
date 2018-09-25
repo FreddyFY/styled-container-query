@@ -59,12 +59,12 @@ const constructWithOptions = Component => (strings, ...expressions) => {
   return Object.assign(StyledContainerQuery, StyledComponent)
 }
 
-const styledContainerQuery = () => {
+const styledContainerQuery = (() => {
   const styledCQ = constructWithOptions
   domElements.forEach(domElement => {
     styledCQ[domElement] = constructWithOptions(domElement)
   })
   return styledCQ
-}
+})()
 
-export default styledContainerQuery()
+export default styledContainerQuery
