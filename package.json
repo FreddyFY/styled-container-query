@@ -24,7 +24,7 @@
   "main": "dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "babel src -d dist --copy-files",
+    "build": "trash dist/ && babel src -d dist --copy-files",
     "precommit": "lint-staged"
   },
   "dependencies": {
@@ -43,13 +43,15 @@
     "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.2",
+    "husky": "^1.1.2",
     "lint-staged": "^7.3.0",
-    "prettier": "^1.14.3"
+    "prettier": "^1.14.3",
+    "trash-cli": "^1.4.0"
   },
   "lint-staged": {
     "*.js": [
       "npm run build",
-      "prettier --write",
+      "prettier --write \"src/*\"",
       "git add",
       "git add ./dist"
     ]
