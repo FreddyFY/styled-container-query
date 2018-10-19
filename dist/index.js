@@ -8,6 +8,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { ContainerQuery } from 'react-container-query';
 import classNames from 'classnames';
+import hoistStatics from 'hoist-non-react-statics';
 import domElements from './dom-elements';
 import newClassName from './utils/new-class-name';
 import kebabToCamel from './utils/kebab-to-camel';
@@ -55,8 +56,7 @@ function removeUnit(value) {
 const constructWithOptions = Component => (strings, ...expressions) => {
   const [cssStrings, query] = parseCss(strings);
   const StyledComponent = styled(Component)(cssStrings, ...expressions);
-
-  const StyledContainerQuery = (_ref) => {
+  const StyledContainerQuery = React.forwardRef((_ref, ref) => {
     let {
       className
     } = _ref,
@@ -65,11 +65,11 @@ const constructWithOptions = Component => (strings, ...expressions) => {
     return React.createElement(ContainerQuery, {
       query: query
     }, params => React.createElement(StyledComponent, _extends({
+      ref: ref,
       className: classNames(params, className)
     }, f)));
-  };
-
-  return Object.assign(StyledContainerQuery, StyledComponent);
+  });
+  return hoistStatics(StyledContainerQuery, StyledComponent);
 };
 
 const styledContainerQuery = (() => {
