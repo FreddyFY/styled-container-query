@@ -25,11 +25,16 @@ function parseCss(css) {
 }
 
 function parseContainerFn(params) {
+  const match = {}
   const defRe = '((min-\\w+|max-\\w+)\\s*:\\s*(\\d+px))'
   const regExParams = new RegExp(['^\\s*', defRe, '(\\s+and\\s+)?', defRe, '?', '\\s*$'].join(''))
 
-  let [, , k1, v1, , , k2, v2] = params.match(regExParams)
-  const match = {}
+  const parsedParams = params.match(regExParams)
+  if (!parsedParams) {
+    return match
+  }
+
+  let [, , k1, v1, , , k2, v2] = parsedParams
   if (k1 === undefined) {
     return match
   }

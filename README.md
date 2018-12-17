@@ -37,6 +37,9 @@ const Component = styledContainerQuery.div`
 `;
 ```
 
+## Known issues
+* Props inside a container-query does not work. (#1)
+
 ## License
 MIT License
 
