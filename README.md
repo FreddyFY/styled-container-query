@@ -11,7 +11,7 @@ npm install styled-container-query --save
 ```
 
 ## Usage
-Nothing easier than that. You can use it like [styled-components](https://github.com/styled-components) and a media query `:container()`.
+Nothing easier than that. You can use it like [styled-components](https://github.com/styled-components) and a element query `:container()`.
 
 ```javascript
 import styledContainerQuery from 'styled-container-query';
