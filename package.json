@@ -1,6 +1,6 @@
 {
   "name": "styled-container-query",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "Use Container Queries [Element Queries] with styled-components",
   "author": "Freddy Ochner <freddy@ochner.it> (https://freddy.ochner.it)",
   "repository": {
