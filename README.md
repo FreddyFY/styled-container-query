@@ -1,3 +1,10 @@
+<p>
+    <a href="https://www.npmjs.com/package/styled-container-query" target="_blank"><img src="https://flat.badgen.net/npm/v/styled-container-query" alt="NPM-Version"/></a>
+    <a href="https://www.npmjs.com/package/styled-container-query" target="_blank"><img src="https://flat.badgen.net/npm/dt/styled-container-query" alt="NPM-Downloads"/></a>
+    <a href="https://www.npmjs.com/package/styled-container-query" target="_blank"><img src="https://flat.badgen.net/bundlephobia/minzip/styled-container-query" alt="NPM-Size"/></a>
+    <a href="https://www.npmjs.com/package/styled-container-query" target="_blank"><img src="https://flat.badgen.net/npm/license/styled-container-query" alt="NPM-License"/></a>
+</p>
+
 # Styled Container Query
 Use Container Queries \[Element Queries\] with [styled-components](https://github.com/styled-components)
 
