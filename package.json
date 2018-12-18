@@ -8,7 +8,7 @@
     "url": "git+https://github.com/FreddyFY/styled-container-query.git"
   },
   "homepage": "https://github.com/FreddyFY/styled-container-query",
-  "license": "ISC",
+  "license": "MIT",
   "keywords": [
     "styled-components",
     "container-queries",
