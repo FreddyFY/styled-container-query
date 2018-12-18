@@ -11,7 +11,7 @@ npm install styled-container-query --save
 ```
 
 ## Usage
-Nothing easier than that. You can use it like [styled-components](https://github.com/styled-components) and a element query `:container()`.
+Nothing easier than that. You can use it like [styled-components](https://github.com/styled-components) and an element query `:container()`.
 
 ```javascript
 import styledContainerQuery from 'styled-container-query';
@@ -38,7 +38,7 @@ const Component = styledContainerQuery.div`
 ```
 
 ## Known issues
-* Props inside a container-query does not work. (#1)
+* Props inside a container-query does not work. #1
 
 ## License
 MIT License
