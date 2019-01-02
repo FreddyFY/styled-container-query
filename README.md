@@ -50,6 +50,6 @@ const Component = styledContainerQuery.div`
 ## License
 MIT License
 
-Copyright &copy; 2018 Freddy Ochner
+Copyright &copy; 2019 Freddy Ochner
 
 [LICENSE](https://github.com/FreddyFY/styled-container-query/blob/master/LICENSE)
