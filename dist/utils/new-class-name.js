@@ -1,7 +1,17 @@
-import sh from 'shorthash';
+"use strict";
 
-const newClassName = text => {
-  return `cq-${sh.unique(text)}`;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _shorthash = _interopRequireDefault(require("shorthash"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var newClassName = function newClassName(text) {
+  return "cq-".concat(_shorthash.default.unique(text));
 };
 
-export default newClassName;
+var _default = newClassName;
+exports.default = _default;
