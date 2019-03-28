@@ -113,14 +113,18 @@ const domElements = [
   'var',
   'video',
   'wbr',
+
+  // SVG
   'circle',
   'clipPath',
   'defs',
   'ellipse',
+  'foreignObject',
   'g',
   'image',
   'line',
   'linearGradient',
+  'marker',
   'mask',
   'path',
   'pattern',
