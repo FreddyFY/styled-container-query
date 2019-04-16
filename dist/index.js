@@ -9,8 +9,6 @@ var _react = _interopRequireDefault(require("react"));
 
 var _styledComponents = _interopRequireDefault(require("styled-components"));
 
-var _reactContainerQuery = require("react-container-query");
-
 var _classnames = _interopRequireDefault(require("classnames"));
 
 var _hoistNonReactStatics = _interopRequireDefault(require("hoist-non-react-statics"));
@@ -21,13 +19,13 @@ var _newClassName = _interopRequireDefault(require("./utils/new-class-name"));
 
 var _kebabToCamel = _interopRequireDefault(require("./utils/kebab-to-camel"));
 
+var _removeUnit = _interopRequireDefault(require("./utils/remove-unit"));
+
+var _ContainerQuery = _interopRequireWildcard(require("./ContainerQuery"));
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj["default"] = obj; return newObj; } }
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-
-function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
-function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-
-function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
 
@@ -48,7 +46,10 @@ function parseCss(css) {
     return ".".concat(className);
   });
   css = css.split(delimiter);
-  return [css, query];
+  return {
+    css: css,
+    query: query
+  };
 }
 
 function parseContainerFn(params) {
@@ -72,48 +73,30 @@ function parseContainerFn(params) {
   }
 
   k1 = (0, _kebabToCamel["default"])(k1);
-  match[k1] = removeUnit(v1);
+  match[k1] = (0, _removeUnit["default"])(v1);
 
   if (k2 === undefined) {
     return match;
   }
 
   k2 = (0, _kebabToCamel["default"])(k2);
-  match[k2] = removeUnit(v2);
+  match[k2] = (0, _removeUnit["default"])(v2);
   return match;
-}
-
-function removeUnit(value) {
-  return value.replace(/[^-\d.]/g, '');
 }
 
 var constructWithOptions = function constructWithOptions(Component) {
   return function (strings) {
     var _parseCss = parseCss(strings),
-        _parseCss2 = _slicedToArray(_parseCss, 2),
-        cssStrings = _parseCss2[0],
-        query = _parseCss2[1];
+        cssStrings = _parseCss.css,
+        query = _parseCss.query;
 
     for (var _len = arguments.length, expressions = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
       expressions[_key - 1] = arguments[_key];
     }
 
+    console.log(cssStrings, query, expressions);
     var StyledComponent = (0, _styledComponents["default"])(Component).apply(void 0, [cssStrings].concat(expressions));
-
-    var StyledContainerQuery = _react["default"].forwardRef(function (_ref, ref) {
-      var className = _ref.className,
-          f = _objectWithoutProperties(_ref, ["className"]);
-
-      return _react["default"].createElement(_reactContainerQuery.ContainerQuery, {
-        query: query
-      }, function (params) {
-        return _react["default"].createElement(StyledComponent, _extends({
-          ref: ref,
-          className: (0, _classnames["default"])(params, className)
-        }, f));
-      });
-    });
-
+    var StyledContainerQuery = (0, _ContainerQuery.withQuery)(StyledComponent, query);
     return (0, _hoistNonReactStatics["default"])(StyledContainerQuery, StyledComponent);
   };
 };

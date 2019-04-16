@@ -58,7 +58,7 @@ class ResizerArticle extends Component {
             <Article />
           </Col>
         </ArticleWrapper>
-        <Link href="https://github.com/FreddyFY/styled-container-query/blob/master/examples/src/components/Article.js" target="_blank">» Source on Github</Link>
+        <Link href="https://github.com/FreddyFY/styled-container-query/blob/master/examples/src/screens/ResizerArticle/Article.js" target="_blank">» Source on Github</Link>
       </Wrapper>
     )
   }

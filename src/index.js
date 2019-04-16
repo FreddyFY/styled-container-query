@@ -1,11 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
-import { ContainerQuery } from 'react-container-query'
-import classNames from 'classnames'
 import hoistStatics from 'hoist-non-react-statics'
 import domElements from './dom-elements'
 import newClassName from './utils/new-class-name'
 import kebabToCamel from './utils/kebab-to-camel'
+import removeUnit from './utils/remove-unit'
+import { withQuery } from './ContainerQuery'
 
 function parseCss(css) {
   const delimiter = '$$'
@@ -21,7 +21,7 @@ function parseCss(css) {
   })
 
   css = css.split(delimiter)
-  return [css, query]
+  return { css, query }
 }
 
 function parseContainerFn(params) {
@@ -50,18 +50,10 @@ function parseContainerFn(params) {
   return match
 }
 
-function removeUnit(value) {
-  return value.replace(/[^-\d.]/g, '')
-}
-
 const constructWithOptions = Component => (strings, ...expressions) => {
-  const [cssStrings, query] = parseCss(strings)
+  const { css: cssStrings, query } = parseCss(strings)
   const StyledComponent = styled(Component)(cssStrings, ...expressions)
-  const StyledContainerQuery = React.forwardRef(({ className, ...f }, ref) => (
-    <ContainerQuery query={query}>
-      {params => <StyledComponent ref={ref} className={classNames(params, className)} {...f} />}
-    </ContainerQuery>
-  ))
+  const StyledContainerQuery = withQuery(StyledComponent, query)
   return hoistStatics(StyledContainerQuery, StyledComponent)
 }
 
