@@ -27,7 +27,7 @@
     "prepublishOnly": "npm run transpile",
     "dev": "webpack-dev-server --mode development --hot",
     "build": "webpack --mode production --progress",
-    "deploy": "gh-pages -d examples/dist",
+    "deploy": "gh-pages -d examples/build",
     "publish-demo": "npm run build && npm run deploy"
   },
   "dependencies": {

@@ -7,7 +7,7 @@ module.exports = () => ({
   entry: './examples/src/index.js',
   output: {
     path: path.resolve(__dirname, './examples/build'),
-    publicPath: '/',
+    publicPath: '',
     filename: 'static/js/[name].[hash:8].js',
     chunkFilename: 'static/js/[name].[hash:8].chunk.js',
   },
