@@ -5,55 +5,38 @@ import domElements from './dom-elements'
 import newClassName from './utils/new-class-name'
 import kebabToCamel from './utils/kebab-to-camel'
 import removeUnit from './utils/remove-unit'
-import { withQuery } from './ContainerQuery'
+import { withQueryContainer } from './QueryContainer'
 
 function parseCss(css) {
   const delimiter = '$$'
   const regExContainer = /:container\(([^)]+)\)/g
 
   const query = {}
-  css = css.join(delimiter)
-
-  css = css.replace(regExContainer, (full, params, index) => {
-    const className = newClassName(full + index)
-    query[className] = parseContainerFn(params)
-    return `.${className}`
-  })
-
-  css = css.split(delimiter)
-  return { css, query }
+  const cssStrings = css
+    .join(delimiter)
+    .replace(regExContainer, (full, params, index) => {
+      const className = newClassName(full + index)
+      query[className] = parseContainerFn(params)
+      return `.${className}`
+    })
+    .split(delimiter)
+  return { cssStrings, query }
 }
 
 function parseContainerFn(params) {
-  const match = {}
   const defRe = '((min-\\w+|max-\\w+)\\s*:\\s*(\\d+px))'
-  const regExParams = new RegExp(['^\\s*', defRe, '(\\s+and\\s+)?', defRe, '?', '\\s*$'].join(''))
-
-  const parsedParams = params.match(regExParams)
-  if (!parsedParams) {
-    return match
-  }
-
-  let [, , k1, v1, , , k2, v2] = parsedParams
-  if (k1 === undefined) {
-    return match
-  }
-  k1 = kebabToCamel(k1)
-  match[k1] = removeUnit(v1)
-
-  if (k2 === undefined) {
-    return match
-  }
-  k2 = kebabToCamel(k2)
-  match[k2] = removeUnit(v2)
-
-  return match
+  const singleParameters = params.split(/\s+and\s+/)
+  return singleParameters.reduce((accumulator, stringParam) => {
+    const [, , key, value] = stringParam.match(defRe)
+    accumulator[kebabToCamel(key)] = removeUnit(value)
+    return accumulator
+  }, {})
 }
 
 const constructWithOptions = Component => (strings, ...expressions) => {
-  const { css: cssStrings, query } = parseCss(strings)
+  const { cssStrings, query } = parseCss(strings)
   const StyledComponent = styled(Component)(cssStrings, ...expressions)
-  const StyledContainerQuery = withQuery(StyledComponent, query)
+  const StyledContainerQuery = withQueryContainer(StyledComponent, query)
   return hoistStatics(StyledContainerQuery, StyledComponent)
 }
 

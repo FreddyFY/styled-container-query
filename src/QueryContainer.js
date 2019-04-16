@@ -36,11 +36,11 @@ class QueryContainer extends Component {
   }
 }
 
-const withQuery = (Component, query) =>
+const withQueryContainer = (Component, query) =>
   React.forwardRef((props, ref) => (
     <QueryContainer query={query}>
       <Component {...props} ref={ref} />
     </QueryContainer>
   ))
 
-export { withQuery }
+export { withQueryContainer }

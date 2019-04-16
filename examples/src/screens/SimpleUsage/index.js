@@ -8,15 +8,10 @@ const Wrapper = styled.div``
 const Box = styledContainerQuery(Resizable)`
   background-color: #62b22f;
   
-  &:container(min-width: 300px) {
+  &:container(min-width: 300px and max-width: 600px and min-height: 300px and max-height: 600px) {
     background-color: yellow;
   }
-  
-  &:container(min-height: 300px) {
-    background-color: lightblue;
-  }
 `
-
 
 const Link = styled.a`
   color: #62b22f;
