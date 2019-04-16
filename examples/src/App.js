@@ -1,8 +1,8 @@
 import React from 'react'
-import ResizerArticle from './components/ResizerArticle'
+import ResizerArticle from './screens/ResizerArticle'
 import { createGlobalStyle } from 'styled-components'
-import Header from './components/layouts/Header'
-import GithubCorner from './components/layouts/GithubCorner'
+import Header from './layouts/Header'
+import GithubCorner from './layouts/GithubCorner'
 
 const Styles = createGlobalStyle`
   @import url('https://fonts.googleapis.com/css?family=Roboto-Slab|Montserrat:700');

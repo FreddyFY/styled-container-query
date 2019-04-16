@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import styledContainerQuery from '../../../src'
+import styledContainerQuery from '../../../../src'
 import UnsplashBadge, { UnsplashBadgeName, UnsplashBadgeWrapper } from './UnsplashBadge'
 
 const Image = styled.img`

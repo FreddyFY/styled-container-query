@@ -18,7 +18,7 @@ const Col = styled.div`
   box-sizing: border-box;
 `
 
-const SeeCode = styled.a`
+const Link = styled.a`
   color: #62b22f;
   font-size: .8em;
 `
@@ -58,7 +58,7 @@ class ResizerArticle extends Component {
             <Article />
           </Col>
         </ArticleWrapper>
-        <SeeCode href="https://github.com/FreddyFY/styled-container-query/blob/master/examples/src/components/Article.js" target="_blank">» Source on Github</SeeCode>
+        <Link href="https://github.com/FreddyFY/styled-container-query/blob/master/examples/src/components/Article.js" target="_blank">» Source on Github</Link>
       </Wrapper>
     )
   }
