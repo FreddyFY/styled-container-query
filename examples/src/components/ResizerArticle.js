@@ -15,7 +15,6 @@ const ArticleWrapper = styled.div`
 `
 
 const Col = styled.div`
-  padding: 1em;
   box-sizing: border-box;
 `
 

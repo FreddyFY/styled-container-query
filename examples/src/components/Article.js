@@ -54,6 +54,7 @@ const Wrapper = styledContainerQuery.article`
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin: 2em;
   
   &:container(min-width: 300px) {
     ${Image} {
