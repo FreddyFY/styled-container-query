@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = void 0;
+exports["default"] = void 0;
 
 var kebabToCamel = function kebabToCamel(kebab) {
   return kebab.replace(/-([a-z])/g, function (g) {
@@ -12,4 +12,4 @@ var kebabToCamel = function kebabToCamel(kebab) {
 };
 
 var _default = kebabToCamel;
-exports.default = _default;
+exports["default"] = _default;
