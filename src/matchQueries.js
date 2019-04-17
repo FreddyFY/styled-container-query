@@ -10,7 +10,7 @@ const matchQueries = (rules, { width, height }) => {
     }
   })
 
-  const filterd = entries.filter(({ minWidth, maxWidth, minHeight, maxHeight }) => {
+  const filtered = entries.filter(({ minWidth, maxWidth, minHeight, maxHeight }) => {
     if (height != null && width != null) {
       return minWidth <= width && width <= maxWidth && minHeight <= height && height <= maxHeight
     }
@@ -23,7 +23,7 @@ const matchQueries = (rules, { width, height }) => {
     return true
   })
 
-  return filterd.map(entry => entry.className)
+  return filtered.map(entry => entry.className)
 }
 
 export default matchQueries
