@@ -9,8 +9,6 @@ var _react = _interopRequireDefault(require("react"));
 
 var _styledComponents = _interopRequireDefault(require("styled-components"));
 
-var _classnames = _interopRequireDefault(require("classnames"));
-
 var _hoistNonReactStatics = _interopRequireDefault(require("hoist-non-react-statics"));
 
 var _domElements = _interopRequireDefault(require("./dom-elements"));
@@ -21,9 +19,7 @@ var _kebabToCamel = _interopRequireDefault(require("./utils/kebab-to-camel"));
 
 var _removeUnit = _interopRequireDefault(require("./utils/remove-unit"));
 
-var _ContainerQuery = _interopRequireWildcard(require("./ContainerQuery"));
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj["default"] = obj; return newObj; } }
+var _QueryContainer = require("./QueryContainer");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -39,64 +35,43 @@ function parseCss(css) {
   var delimiter = '$$';
   var regExContainer = /:container\(([^)]+)\)/g;
   var query = {};
-  css = css.join(delimiter);
-  css = css.replace(regExContainer, function (full, params, index) {
+  var cssStrings = css.join(delimiter).replace(regExContainer, function (full, params, index) {
     var className = (0, _newClassName["default"])(full + index);
     query[className] = parseContainerFn(params);
     return ".".concat(className);
-  });
-  css = css.split(delimiter);
+  }).split(delimiter);
   return {
-    css: css,
+    cssStrings: cssStrings,
     query: query
   };
 }
 
 function parseContainerFn(params) {
-  var match = {};
   var defRe = '((min-\\w+|max-\\w+)\\s*:\\s*(\\d+px))';
-  var regExParams = new RegExp(['^\\s*', defRe, '(\\s+and\\s+)?', defRe, '?', '\\s*$'].join(''));
-  var parsedParams = params.match(regExParams);
+  var singleParameters = params.split(/\s+and\s+/);
+  return singleParameters.reduce(function (accumulator, stringParam) {
+    var _stringParam$match = stringParam.match(defRe),
+        _stringParam$match2 = _slicedToArray(_stringParam$match, 4),
+        key = _stringParam$match2[2],
+        value = _stringParam$match2[3];
 
-  if (!parsedParams) {
-    return match;
-  }
-
-  var _parsedParams = _slicedToArray(parsedParams, 8),
-      k1 = _parsedParams[2],
-      v1 = _parsedParams[3],
-      k2 = _parsedParams[6],
-      v2 = _parsedParams[7];
-
-  if (k1 === undefined) {
-    return match;
-  }
-
-  k1 = (0, _kebabToCamel["default"])(k1);
-  match[k1] = (0, _removeUnit["default"])(v1);
-
-  if (k2 === undefined) {
-    return match;
-  }
-
-  k2 = (0, _kebabToCamel["default"])(k2);
-  match[k2] = (0, _removeUnit["default"])(v2);
-  return match;
+    accumulator[(0, _kebabToCamel["default"])(key)] = (0, _removeUnit["default"])(value);
+    return accumulator;
+  }, {});
 }
 
 var constructWithOptions = function constructWithOptions(Component) {
   return function (strings) {
     var _parseCss = parseCss(strings),
-        cssStrings = _parseCss.css,
+        cssStrings = _parseCss.cssStrings,
         query = _parseCss.query;
 
     for (var _len = arguments.length, expressions = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
       expressions[_key - 1] = arguments[_key];
     }
 
-    console.log(cssStrings, query, expressions);
     var StyledComponent = (0, _styledComponents["default"])(Component).apply(void 0, [cssStrings].concat(expressions));
-    var StyledContainerQuery = (0, _ContainerQuery.withQuery)(StyledComponent, query);
+    var StyledContainerQuery = (0, _QueryContainer.withQueryContainer)(StyledComponent, query);
     return (0, _hoistNonReactStatics["default"])(StyledContainerQuery, StyledComponent);
   };
 };
