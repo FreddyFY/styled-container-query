@@ -1,10 +1,9 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import hoistStatics from 'hoist-non-react-statics'
 import domElements from './dom-elements'
 import newClassName from './utils/new-class-name'
 import kebabToCamel from './utils/kebab-to-camel'
-import removeUnit from './utils/remove-unit'
 import { withQueryContainer } from './QueryContainer'
 
 function parseCss(css) {
@@ -24,11 +23,13 @@ function parseCss(css) {
 }
 
 function parseContainerFn(params) {
-  const defRe = '((min-\\w+|max-\\w+)\\s*:\\s*(\\d+px))'
+  const defRe = /((min-\w+|max-\w+)\s*:\s*((-?[\d+.\-])+([a-z]+|%)))/
   const singleParameters = params.split(/\s+and\s+/)
   return singleParameters.reduce((accumulator, stringParam) => {
-    const [, , key, value] = stringParam.match(defRe)
-    accumulator[kebabToCamel(key)] = removeUnit(value)
+    const matchedString = stringParam.match(defRe)
+    if (!matchedString) return accumulator
+    const [, , key, value] = matchedString
+    accumulator[kebabToCamel(key)] = value
     return accumulator
   }, {})
 }

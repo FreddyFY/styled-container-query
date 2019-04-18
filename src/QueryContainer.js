@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import classNames from 'classnames'
 import { ResizeObserver } from 'resize-observer'
 import matchQueries from './matchQueries'
+import unitToPx from './utils/unit-to-px'
 
 class QueryContainer extends Component {
   state = {
@@ -17,9 +18,22 @@ class QueryContainer extends Component {
   handleResize = entry => {
     if (entry.length !== 1) return
     const { width, height } = entry[0].contentRect
-    const result = matchQueries(this.props.query, { width, height })
+    const result = matchQueries(this.parseQueryUnits(this.props.query), { width, height })
     this.setState({ additionalClassNames: result })
   }
+
+  parseQueryUnits = queries =>
+    Object.keys(queries).reduce((accumulator, key) => {
+      accumulator[key] = this.parseSingleQuery(queries[key])
+      return accumulator
+    }, {})
+
+  parseSingleQuery = query => (
+    Object.keys(query).reduce((accumulator, innerKey) => {
+      accumulator[innerKey] = unitToPx(this.element, query[innerKey])
+      return accumulator
+    }, {})
+  )
 
   componentWillUnmount() {
     this.observer.disconnect()

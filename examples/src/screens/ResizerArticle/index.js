@@ -2,7 +2,9 @@ import styled from 'styled-components'
 import React, { Component } from 'react'
 import Article from './Article'
 
-const Wrapper = styled.div``
+const Wrapper = styled.div`
+  padding: 2em 0;
+`
 
 const Slider = styled.input`
   width: 70%;

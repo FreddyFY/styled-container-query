@@ -45,11 +45,15 @@ const Component = styledContainerQuery.div`
   &:container(min-height: 500px) {
       background-color: blue;
   }
+  
+  &:container(min-width: 50%) {
+      background-color: blue;
+  }
 `;
 ```
 
 ## Known issues
-* Props inside a container-query does not work. #1
+* Props inside a container-query does not work. [#1](https://github.com/FreddyFY/styled-container-query/issues/1)
 
 ## License
 MIT License
