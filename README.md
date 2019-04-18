@@ -11,9 +11,8 @@ Use Container Queries \[Element Queries\] with [styled-components](https://githu
 NPM-Package: [styled-container-query](https://www.npmjs.com/package/styled-container-query)
 
 ## Demo
-[https://freddyfy.github.io/styled-container-query/](https://freddyfy.github.io/styled-container-query/)
-
-[https://codesandbox.io/s/483170qvyw](https://codesandbox.io/s/483170qvyw)
+* [Online Demo](https://freddyfy.github.io/styled-container-query/)
+* [Codesandbox](https://codesandbox.io/s/483170qvyw)
 
 ## Installing
 
