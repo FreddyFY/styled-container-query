@@ -10,7 +10,7 @@ const Wrapper = styled.header`
   margin-bottom: 0.5em;
   font-weight: bold;
   font-size: 3em;
-  background-color: #eee;
+  background-color: #f5f2f0;
 `
 
 const Header = ({ ...props }) => <Wrapper {...props}>Styled Container Query Demo</Wrapper>
