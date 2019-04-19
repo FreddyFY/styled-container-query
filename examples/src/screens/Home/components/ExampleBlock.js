@@ -3,20 +3,24 @@ import styled from 'styled-components'
 import LiveEdit from '../../../components/LiveEdit'
 import Resizable from 're-resizable'
 
-const Wrapper = styled.article``
+const Wrapper = styled.article`
+  margin-top: 2em;
+`
 
 const Title = styled.h1``
 
 const Description = styled.p``
 
-const StyledResizable = styled(props => (
+const StyledResizable = styled(({ children = 'Resize Me', ...props }) => (
   <Resizable
     {...props}
     defaultSize={{
       width: 200,
       height: 100,
     }}
-  >Resize me</Resizable>
+  >
+    {children}
+  </Resizable>
 ))`
   max-height: 100%;
   max-width: 100%;
@@ -25,7 +29,8 @@ const StyledResizable = styled(props => (
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: inset 0 0 20px rgba(0, 0, 0, .05);
+  box-sizing: border-box;
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.05);
 `
 
 const ExampleBlock = ({ title, description, code, scope = {}, ...props }) => (

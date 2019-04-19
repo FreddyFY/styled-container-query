@@ -78,14 +78,12 @@ const StyledEditor = styled(LiveEditor)`
   .token.inserted {
     color: #62b22f;
   }
-
-  .token.operator,
   .token.entity,
   .token.url,
   .language-css .token.string,
   .style .token.string {
     color: #e90;
-    background: rgba(255, 255, 255, 0.5);
+    background: rgba(100, 100, 100, 0.1);
   }
   .token.atrule,
   .token.attr-value,
@@ -96,7 +94,7 @@ const StyledEditor = styled(LiveEditor)`
   }
   .token.styled-function .scq {
     font-weight: bold;
-    background: rgba(255, 255, 255, 0.5);
+    background: rgba(100, 100, 100, 0.1);
   }
   .token.regex,
   .token.important {
