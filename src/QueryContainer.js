@@ -30,7 +30,8 @@ class QueryContainer extends Component {
 
   parseSingleQuery = query => (
     Object.keys(query).reduce((accumulator, innerKey) => {
-      accumulator[innerKey] = unitToPx(this.element, query[innerKey])
+      const prop = innerKey.match(/[A-Z]\w*$/)[0].toLowerCase()
+      accumulator[innerKey] = unitToPx(this.element, query[innerKey], prop)
       return accumulator
     }, {})
   )

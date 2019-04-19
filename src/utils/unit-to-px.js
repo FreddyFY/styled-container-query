@@ -3,8 +3,7 @@
  */
 
 const unitToPx = (() => {
-  const toPx = (elem, value) => {
-    const prop = 'width'
+  const toPx = (elem, value, prop = 'width') => {
     const runit = /^(-?[\d+\.\-]+)([a-z]+|%)$/i
 
     const unit = (value.match(runit) || [])[2]
