@@ -65,12 +65,15 @@
     "webpack-cli": "^3.3.0",
     "webpack-dev-server": "^3.3.1"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
   "lint-staged": {
     "*.js": [
-      "npm run build",
-      "prettier --write \"src/*\"",
-      "git add",
-      "git add ./dist"
+      "prettier --write",
+      "git add"
     ]
   },
   "prettier": {

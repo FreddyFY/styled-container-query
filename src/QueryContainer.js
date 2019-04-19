@@ -28,13 +28,12 @@ class QueryContainer extends Component {
       return accumulator
     }, {})
 
-  parseSingleQuery = query => (
+  parseSingleQuery = query =>
     Object.keys(query).reduce((accumulator, innerKey) => {
       const prop = innerKey.match(/[A-Z]\w*$/)[0].toLowerCase()
       accumulator[innerKey] = unitToPx(this.element, query[innerKey], prop)
       return accumulator
     }, {})
-  )
 
   componentWillUnmount() {
     this.observer.disconnect()

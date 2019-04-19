@@ -22,7 +22,7 @@ function App() {
       <Styles />
       <Header />
       <GithubCorner />
-      <Home/>
+      <Home />
     </div>
   )
 }
