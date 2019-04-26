@@ -28,7 +28,7 @@
     "demo:build": "webpack --mode production --progress",
     "demo:dev": "webpack-dev-server --mode development --hot",
     "demo:deploy": "gh-pages -d examples/build",
-    "demo:publish": "npm run build && npm run deploy"
+    "demo:publish": "npm run demo:build && npm run demo:deploy"
   },
   "dependencies": {
     "classnames": "^2.2.6",
