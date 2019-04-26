@@ -3,6 +3,7 @@ import { createGlobalStyle } from 'styled-components'
 import Header from './components/Header'
 import GithubCorner from './components/GithubCorner'
 import Home from './screens/Home'
+import './utils/analytics'
 
 const Styles = createGlobalStyle`
   @import url('https://fonts.googleapis.com/css?family=Roboto-Slab|Montserrat:700');
