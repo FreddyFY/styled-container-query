@@ -2,10 +2,12 @@
   Lite version of https://github.com/heygrady/Units
  */
 
-const unitToPx = (() => {
-  const toPx = (elem, value, prop = 'width') => {
-    const runit = /^(-?[\d+\.\-]+)([a-z]+|%)$/i
+const dummyFn = (element, value) => (value.match(/px$/) ? parseFloat(value) : undefined)
 
+const unitToPx = (() => {
+  const runit = /^(-?[\d+\.\-]+)([a-z]+|%)$/i
+  if (typeof document === 'undefined') return dummyFn
+  const toPx = (elem, value, prop = 'width') => {
     const unit = (value.match(runit) || [])[2]
 
     if (convert && unit in convert) {

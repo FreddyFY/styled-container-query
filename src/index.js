@@ -1,5 +1,5 @@
 import React from 'react'
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 import hoistStatics from 'hoist-non-react-statics'
 import domElements from './dom-elements'
 import newClassName from './utils/new-class-name'
