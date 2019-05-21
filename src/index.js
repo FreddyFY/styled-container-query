@@ -1,10 +1,17 @@
-import React from 'react'
 import styled from 'styled-components'
 import hoistStatics from 'hoist-non-react-statics'
 import domElements from './dom-elements'
 import newClassName from './utils/new-class-name'
 import kebabToCamel from './utils/kebab-to-camel'
 import { withQueryContainer } from './QueryContainer'
+
+/**
+ * Use Container Queries [Element Queries] with styled-components
+ *
+ * @copyright Freddy Ochner (https://freddy.ochner.it)
+ * @website https://github.com/FreddyFY/styled-container-query
+ * @license MIT
+ */
 
 function parseCss(css) {
   const delimiter = '$$'
