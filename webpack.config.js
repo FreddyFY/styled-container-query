@@ -1,6 +1,6 @@
 const path = require('path')
 const HtmlWebPackPlugin = require('html-webpack-plugin')
-const CleanWebpackPlugin = require('clean-webpack-plugin/dist/clean-webpack-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin/dist/clean-webpack-plugin')
 
 module.exports = () => ({
   devtool: 'source-map',

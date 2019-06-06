@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import LiveEdit from '../../../components/LiveEdit'
-import Resizable from 're-resizable'
+import { Resizable } from 're-resizable'
 
 const Wrapper = styled.article`
   margin-top: 2em;
