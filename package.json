@@ -1,6 +1,6 @@
 {
   "name": "styled-container-query",
-  "version": "1.3.3",
+  "version": "1.3.4",
   "description": "Use Container Queries [Element Queries] with styled-components",
   "author": "Freddy Ochner <freddy@ochner.it> (https://freddy.ochner.it)",
   "repository": {
@@ -37,8 +37,8 @@
     "shorthash": "0.0.2"
   },
   "peerDependencies": {
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
     "styled-components": "^4.3.2"
   },
   "devDependencies": {
@@ -50,20 +50,20 @@
     "@probablyup/react-live": "^1.11.1",
     "babel-loader": "^8.0.6",
     "clean-webpack-plugin": "^3.0.0",
-    "gh-pages": "^2.0.1",
+    "gh-pages": "^2.1.1",
     "html-webpack-plugin": "^3.2.0",
-    "husky": "^3.0.1",
-    "lint-staged": "^9.2.0",
+    "husky": "^3.0.4",
+    "lint-staged": "^9.2.3",
     "prettier": "^1.18.2",
     "prismjs": "^1.17.1",
-    "re-resizable": "^5.0.1",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
+    "re-resizable": "^6.0.0",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
     "styled-components": "^4.3.2",
     "trash-cli": "^3.0.0",
-    "webpack": "^4.36.1",
-    "webpack-cli": "^3.3.6",
-    "webpack-dev-server": "^3.7.2"
+    "webpack": "^4.39.2",
+    "webpack-cli": "^3.3.7",
+    "webpack-dev-server": "^3.8.0"
   },
   "husky": {
     "hooks": {
