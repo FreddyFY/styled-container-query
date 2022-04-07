@@ -39,7 +39,7 @@
   "peerDependencies": {
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
-    "styled-components": "^4.3.2"
+    "styled-components": "^5.2.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.8.4",
@@ -59,7 +59,7 @@
     "re-resizable": "^6.3.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "styled-components": "^4.4.1",
+    "styled-components": "^5.3.5",
     "trash-cli": "^3.0.0",
     "webpack": "^4.42.1",
     "webpack-cli": "^3.3.11",
