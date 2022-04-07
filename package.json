@@ -24,7 +24,7 @@
   "main": "dist/index.js",
   "scripts": {
     "transpile": "trash dist/ && babel src -d dist --copy-files",
-    "prepublishOnly": "npm run transpile",
+    "prepare": "npm run transpile",
     "demo:build": "webpack --mode production --progress",
     "demo:dev": "webpack-dev-server --mode development --hot",
     "demo:deploy": "gh-pages -d examples/build",
