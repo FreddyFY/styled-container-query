@@ -63,7 +63,7 @@
     "trash-cli": "^3.0.0",
     "webpack": "^4.42.1",
     "webpack-cli": "^3.3.11",
-    "webpack-dev-server": "^3.10.3"
+    "webpack-dev-server": "^5.2.6"
   },
   "husky": {
     "hooks": {
